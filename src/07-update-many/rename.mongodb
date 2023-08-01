@@ -1,0 +1,13 @@
+use("sample_training")
+
+db.zips.updateMany(
+    // query
+    {city: "CLEVELAND"},
+
+    //CAMBIAR NOMBRE DE ATRIBUTO SIN MODIFICAR SU VALOR 
+    {
+        $rename: {
+            myAttr: "my_data"
+        }
+    }
+)

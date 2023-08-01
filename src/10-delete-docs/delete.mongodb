@@ -1,0 +1,13 @@
+use("platzi_store")
+
+// En caso de hacer busqueda con ID automatico 
+db.products.deleteOne({_id: ObjectId ('12345')})
+
+// En caso de hacer busqueda con ID manual 
+db.products.deleteOne({_id:1})
+
+// Eliminar varios con condicion 
+db.products.deleteMany({ price: 100})
+
+// Eliminar todos los documentos de una colecion 
+db.products.drop()

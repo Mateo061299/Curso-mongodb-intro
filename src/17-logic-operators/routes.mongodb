@@ -1,0 +1,35 @@
+use("sample_training")
+
+db.routes.find({ airplane: "E70"})
+
+// Vuelos aterrizados en Bogota
+db.routes.find({
+    $or: [
+            {dst_airport: "BOG"},
+            {dst_airport: "BOG"}
+        ]
+    })
+
+    db.routes.find({
+        $and:[
+            { airplane: "E70"},
+            {
+                $or:[
+                    { dst_airport: "BOG"},
+                    {src_airport: "BOG"}
+                ]
+            }
+        ]
+    })
+
+    db.routes.find({
+        $and:[
+            { airplane: "E70"},
+            {
+                $or:[
+                    { dst_airport: "BOG"},
+                    {src_airport: "BOG"}
+                ]
+            }
+        ]
+    }).count()

@@ -1,0 +1,33 @@
+use("sample_training")
+
+db.trips.findOne()
+
+db.trips.findOne({"start station location.type": "Point"})
+
+
+// QUE EL CEO DE LA COMPAÑIA SE LLAME MARK 
+db.companies.find({
+    "relationships.0.person.first_name" : "Mark"
+}, {
+    name: 1,
+    relationships: 1
+})
+
+db.companies.find({
+    "relationships.0.person.first_name" : "Mark"
+}, {
+    name: 1,
+    relationships: 1
+}).count() // 108 
+
+// CUALQUIER PERSONA DE LA COMPAÑIA QUE SE LLAMA MARK 
+db.companies.find({
+    relationships: {
+        $elemMatch:{
+            "person.first_name":"Mark"
+        }
+    }
+}, {
+    name: 1,
+    relationships: 1
+}).count() // 523 

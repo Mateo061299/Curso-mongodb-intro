@@ -1,0 +1,40 @@
+use("platzi_store")
+
+// $in, values y arrays - RANGO EN NUMEROS 
+db.inventory.find({qty: {$in: [20, 25]} })
+
+//DENTRO DE UN ARRAY - QUE ESTE EL UNO O EL OTRO 
+db.inventory.find({tags: {$in: ["book", "electronics"]} })
+
+// $nin, values y arrays - EXCLUYE
+db.inventory.find({qty: {$nin: [20, 25]} })
+
+//DENTRO DE UN ARRAY - QUE ESTE EL UNO O EL OTRO 
+db.inventory.find({tags: {$nin: ["book", "electronics"]} })
+
+
+//SOLO PARA ARRAYS - NO VALORES NUMERICOS 
+db.inventory.find({tags: "book"})
+
+//Posicion exacta en el array 
+db.inventory.find({tags: ["school","book"]})
+
+// ARRAYS $all
+db.inventory.find({tags: {$all: ["school","book"]}})
+
+// $size
+db.inventory.find({tags: {$size: 2} })
+
+//$ elemMatch
+db.survey.find({ results: { $elemMatch: { product: "xyz"}}})
+
+db.survey.find({ results: { $elemMatch: { product: "xyz", score: { $gte: 7}}}})
+
+db.survey.find({
+     results: {
+         $elemMatch: {
+             product: "xyz",
+              score: { $gte: 7}
+            }}
+        })
+

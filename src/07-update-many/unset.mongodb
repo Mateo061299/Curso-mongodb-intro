@@ -1,0 +1,13 @@
+use("sample_training")
+
+db.zips.updateMany(
+    // query
+    {city: "CLEVELAND"},
+
+    //ELIMINAR ATIBUTO DEPUES DE LA BUSQUEDA 
+    {
+        $unset: {
+            my_data: ""
+        }
+    }
+)

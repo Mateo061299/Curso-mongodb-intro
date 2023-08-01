@@ -1,0 +1,17 @@
+use("platzi_store")
+
+// USING $eq
+
+//Comparacion indirecta
+db.inventory.find({qty: 20})
+
+//Comparacion directa
+db.inventory.find({qty: {$eq: 20 }})
+
+//Busqueda dentro de un subdocumento
+db.inventory.find({"item.name": "ab"})
+db.inventory.find({"item.code": "123"})
+
+//USING $ne - Exclusion
+db.inventory.find({qty: {$ne: 20 }})
+

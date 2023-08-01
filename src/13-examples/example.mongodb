@@ -1,0 +1,13 @@
+use("platzi_store")
+
+db.iot.updateMany(
+    // query - SI CUMPLE CON ESTA CONDICCION 
+    {sensor: "A001"},
+
+    //update -ELIMINANDO LECTURAS MAYORES O IGUALES A 3
+    {
+        $pull:{
+            readings: { $gte: 3 }
+        }
+    }
+)

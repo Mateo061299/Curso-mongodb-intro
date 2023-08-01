@@ -1,0 +1,22 @@
+use("platzi_store")
+
+//Si encuentra alguna similitud exacta en description
+db.inventory.find({ "item.description":"Single line description."})
+
+//Si encuentra alguna similitud con el patron 'line'
+db.inventory.find({ "item.description": { $regex: /line/ } })
+
+//Para que no diferencie de Minusculas y MAYUSCULAS 
+db.inventory.find({ "item.description": { $regex: /LINE/i } })
+
+//QUE EL DOCUMENTO TERMINE EXACTAMENTE CON ESTE PATRON 
+db.inventory.find({ "item.description": { $regex: /line$/i } })
+
+//QUE EL DOCUMENTO EMPIECE EXACTAMENTE CON ESTE PATRON - NO IMPORTA MAYUS O MINUS POR LA i
+db.inventory.find({ "item.description": { $regex: /^SINGLE/i } })
+
+//QUE EL DOCUMENTO EMPIECE EXACTAMENTE CON ESTE PATRON - NO IMPORTA MAYUS O MINUS POR LA i
+db.inventory.find({ "item.description": { $regex: /^SINGLE/i } })
+
+//DOCUMENTO EMPIECE  CON ESTA LETRA - NO IMPORTA MAYUS O MINUS POR LA i Y EVALUA MULTILINEA POR L m
+db.inventory.find({ "item.description": { $regex: /^S/im } })

@@ -1,0 +1,27 @@
+use("sample_training")
+
+db.trips.find()
+
+// Validar la estacion de inicio IDy La final ID
+db.trips.find({
+    $expr: {
+        $eq: ["$start station id", "$end station id"]
+    }
+})
+
+// Validar la estacion de inicio IDy La final ID - CONTANDOLOS
+db.trips.find({
+    $expr: {
+        $eq: ["$start station id", "$end station id"]
+    }
+}).count()
+
+// Validar la estacion de inicio IDy La final ID - CON AND
+db.trips.find({
+    $expr: {
+        $and: [
+            {$eq: ["$start station id", "$end station id"] },
+            {$gte: ["$tripduration", 1200] }
+        ]
+    }
+}).count()
